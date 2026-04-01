@@ -517,3 +517,32 @@
   color: var(--color-gold);
   margin-bottom: var(--space-md);
 }
+
+/* ---- Property card extras ---- */
+.property-card__type-pill {
+  display: inline-block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  margin-bottom: var(--space-xs);
+}
+
+.property-card__cta {
+  margin-top: var(--space-md);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  transition: gap var(--transition-fast);
+}
+
+.property-card:hover .property-card__cta {
+  letter-spacing: 0.15em;
+}

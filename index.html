@@ -18,6 +18,8 @@
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/property.css" />
+  <link rel="stylesheet" href="css/multistep-forms.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
 <body>
@@ -41,8 +43,9 @@
     <ul class="nav__links" role="list">
       <li><a href="#about" class="nav__link">About</a></li>
       <li><a href="#listings" class="nav__link">Listings</a></li>
+      <li><a href="#buyer-match" class="nav__link">Find a Property</a></li>
+      <li><a href="#seller-valuation" class="nav__link">Sell</a></li>
       <li><a href="#investment" class="nav__link">Invest</a></li>
-      <li><a href="#testimonials" class="nav__link">Clients</a></li>
       <li><a href="#contact" class="nav__link">Contact</a></li>
     </ul>
 
@@ -61,6 +64,8 @@
       <li><a href="#home" class="nav__drawer-link">Home</a></li>
       <li><a href="#about" class="nav__drawer-link">About</a></li>
       <li><a href="#listings" class="nav__drawer-link">Listings</a></li>
+      <li><a href="#buyer-match" class="nav__drawer-link">Find a Property</a></li>
+      <li><a href="#seller-valuation" class="nav__drawer-link">Sell</a></li>
       <li><a href="#investment" class="nav__drawer-link">Invest</a></li>
       <li><a href="#testimonials" class="nav__drawer-link">Clients</a></li>
       <li><a href="#contact" class="nav__drawer-link">Contact</a></li>
@@ -237,6 +242,48 @@
   </section>
 
   <!-- ============================================================
+       MORTGAGE CALCULATOR
+  ============================================================ -->
+  <section id="calculator" class="calculator-section">
+    <div class="container">
+      <div class="section__header section__header--centered">
+        <span class="section__eyebrow">Finance</span>
+        <h2 class="section__title">Estimate Your <em>Payments</em></h2>
+        <p class="section__subtitle">Adjust the inputs below to model your monthly mortgage payments across any of our Caribbean properties.</p>
+      </div>
+      <div id="mortgageCalculator"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BUYER LEAD CAPTURE — MULTI-STEP
+  ============================================================ -->
+  <section id="buyer-match" class="buyer-form-section">
+    <div class="container">
+      <div class="section__header section__header--centered">
+        <span class="section__eyebrow">Find Your Property</span>
+        <h2 class="section__title">Get Your <em>Personal Match</em></h2>
+        <p class="section__subtitle">Answer five quick questions and our AI will match you with the right properties — and score your search brief for our advisors.</p>
+      </div>
+      <div id="buyerFormMount"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SELLER VALUATION — MULTI-STEP
+  ============================================================ -->
+  <section id="seller-valuation" class="seller-form-section">
+    <div class="container">
+      <div class="section__header section__header--centered">
+        <span class="section__eyebrow">Sell With Azure Keys</span>
+        <h2 class="section__title">Get an AI <em>Valuation Estimate</em></h2>
+        <p class="section__subtitle">Tell us about your property in five steps. Our AI will analyse comparable sales data and generate an indicative valuation for your Caribbean property.</p>
+      </div>
+      <div id="sellerFormMount"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        TESTIMONIALS
   ============================================================ -->
   <section id="testimonials" class="testimonials section section--dark">
@@ -382,11 +429,13 @@
   ============================================================ -->
   <script src="js/data/listings.data.js"></script>
   <script src="js/data/testimonials.data.js"></script>
-  <script src="js/components/lightbox.js"></script>
   <script src="js/components/nav.js"></script>
   <script src="js/components/listings.js"></script>
   <script src="js/components/testimonials.js"></script>
   <script src="js/components/contact.js"></script>
+  <script src="js/components/mortgage-calculator.js"></script>
+  <script src="js/components/buyer-form.js"></script>
+  <script src="js/components/seller-form.js"></script>
   <script src="js/main.js"></script>
 
 </body>
