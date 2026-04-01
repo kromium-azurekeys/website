@@ -37,14 +37,25 @@
   // ── 3. Hero Gallery ──────────────────────────────────────────
   const galleryEl = document.getElementById('propGallery');
   if (galleryEl) {
-    const imgs = prop.gallery && prop.gallery.length ? prop.gallery : [prop.image];
+    const imgs = (prop.gallery && prop.gallery.length) ? prop.gallery.slice(0, 4) : [prop.image];
+    const count = imgs.length;
+
+    // Apply grid class based on image count
+    if (count >= 4) galleryEl.classList.add('gallery--4');
+    else if (count === 3) galleryEl.classList.add('gallery--3');
+    else if (count === 2) galleryEl.classList.add('gallery--2');
+
     galleryEl.innerHTML = imgs.map((src, i) => `
-      <div class="gallery-thumb${i >= 4 ? ' gallery-thumb--hidden' : ''}" data-index="${i}">
-        <img src="${src}" alt="${prop.alt} — photo ${i+1}" loading="${i === 0 ? 'eager' : 'lazy'}" />
+      <div class="gallery-thumb" data-index="${i}">
+        <img
+          src="${src}"
+          alt=""
+          loading="${i === 0 ? 'eager' : 'lazy'}"
+          onerror="this.closest('.gallery-thumb').style.display='none'"
+        />
       </div>
     `).join('');
 
-    // Click any thumb → open modal at that index
     galleryEl.querySelectorAll('.gallery-thumb').forEach(thumb => {
       thumb.addEventListener('click', () => openGalleryModal(+thumb.dataset.index));
     });

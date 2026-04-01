@@ -25,23 +25,47 @@ body {
   overflow: hidden;
 }
 
+/* Default: single image */
 .prop-hero__gallery {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
   gap: 3px;
   height: 100%;
 }
+
+/* 2 images: side by side */
+.prop-hero__gallery.gallery--2 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+/* 3 images: big left, two stacked right */
+.prop-hero__gallery.gallery--3 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.prop-hero__gallery.gallery--3 .gallery-thumb:first-child {
+  grid-row: span 2;
+}
+
+/* 4 images: big left (spans 2 rows), three on right */
+.prop-hero__gallery.gallery--4 {
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.prop-hero__gallery.gallery--4 .gallery-thumb:first-child {
+  grid-row: span 2;
+}
+/* Right column: top image spans both rows if only 2 right-side images */
+/* With 3 right-side images this is handled by the grid auto-placement */
 
 .prop-hero__gallery .gallery-thumb {
   overflow: hidden;
   cursor: pointer;
   background: #131820;
   position: relative;
-}
-
-.prop-hero__gallery .gallery-thumb:first-child {
-  grid-row: span 2;
+  min-height: 0; /* prevent grid blowout */
 }
 
 .prop-hero__gallery .gallery-thumb img {
@@ -50,6 +74,11 @@ body {
   object-fit: cover;
   transition: transform 0.5s ease;
   display: block;
+}
+
+/* Hide images that fail to load — no alt text flash */
+.prop-hero__gallery .gallery-thumb img[data-error="true"] {
+  display: none;
 }
 
 .prop-hero__gallery .gallery-thumb:hover img {
@@ -854,7 +883,16 @@ body {
     order: -1;
   }
 
-  .prop-hero__gallery { grid-template-columns: 1fr 1fr; }
+  /* On tablet, all gallery variants collapse to single column left + one right */
+  .prop-hero__gallery.gallery--3,
+  .prop-hero__gallery.gallery--4 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+  .prop-hero__gallery.gallery--3 .gallery-thumb:first-child,
+  .prop-hero__gallery.gallery--4 .gallery-thumb:first-child {
+    grid-row: span 1;
+  }
   .prop-hero__gallery .gallery-thumb:nth-child(n+3) { display: none; }
 
   .prop-stats { grid-template-columns: repeat(3, 1fr); }
@@ -867,8 +905,16 @@ body {
 
 @media (max-width: 640px) {
   .prop-hero { height: 50vh; }
-  .prop-hero__gallery { grid-template-columns: 1fr; }
+  /* All gallery variants: single image on mobile */
+  .prop-hero__gallery,
+  .prop-hero__gallery.gallery--2,
+  .prop-hero__gallery.gallery--3,
+  .prop-hero__gallery.gallery--4 {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
   .prop-hero__gallery .gallery-thumb:nth-child(n+2) { display: none; }
+  .prop-hero__gallery .gallery-thumb:first-child { grid-row: span 1; }
 
   .prop-stats { grid-template-columns: repeat(2, 1fr); }
   .prop-stat:nth-child(5) { grid-column: span 2; border-right: none; }
