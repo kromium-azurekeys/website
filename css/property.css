@@ -2,6 +2,93 @@
    PROPERTY DETAIL PAGE
 ============================================================ */
 
+/* ── Dark theme: property pages sit on navy, not white ───────── */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text-light);
+}
+
+/* All content sections on property page are dark */
+.prop-layout,
+.prop-main,
+.prop-sidebar {
+  color: var(--color-text-light);
+}
+
+/* Light-bg elements that deliberately use white */
+.prop-sidebar__card,
+.prop-details-table,
+.prop-stats,
+.prop-section--investment,
+.prop-map-placeholder,
+.calc-embed {
+  --color-text:           #1a1a1a;
+  --color-text-muted-dark: #555047;
+  --color-bg-light:       #ffffff;
+  --color-bg-light-alt:   #f5f3ef;
+  --color-border-light:   rgba(26,26,26,0.12);
+}
+
+/* Override text colors throughout .prop-main for dark bg */
+.prop-title,
+.prop-subtitle,
+.prop-section__title,
+.prop-description,
+.prop-price,
+.prop-stat__value {
+  color: var(--color-text-light);
+}
+
+.prop-section__desc,
+.prop-description,
+.prop-location,
+.prop-feature-item,
+.prop-invest-disclaimer,
+.prop-invest-item__label,
+.prop-stat__label {
+  color: rgba(232, 224, 208, 0.7);
+}
+
+.prop-mls {
+  color: rgba(232, 224, 208, 0.45);
+}
+
+/* Details table — white card, dark text */
+.prop-detail-row__label {
+  color: #555047;
+  background: #f5f3ef;
+}
+.prop-detail-row__value {
+  color: #1a1a1a;
+  background: #ffffff;
+}
+
+/* Stat strip — white card, dark text */
+.prop-stat__value { color: var(--color-text); }
+.prop-stat__label { color: var(--color-text-muted-dark); }
+
+/* Investment section — light card, dark text */
+.prop-section--investment {
+  background: #f5f3ef;
+}
+.prop-invest-header { color: var(--color-gold-dark); }
+.prop-invest-item__value { color: var(--color-gold-dark); }
+.prop-invest-item__label { color: #555047; }
+.prop-invest-disclaimer { color: #777; }
+
+/* Map placeholder */
+.prop-map-placeholder { background: #f5f3ef; }
+.prop-map-placeholder__inner { color: #555047; }
+
+/* Features grid items on dark bg */
+.prop-feature-item { color: rgba(232, 224, 208, 0.85); }
+.prop-feature-item svg { color: var(--color-gold); }
+
+/* Section borders on dark bg */
+.prop-section {
+  border-bottom-color: rgba(201, 169, 110, 0.15);
+}
+
 /* ---- Hero Gallery ---- */
 .prop-hero {
   position: relative;
@@ -595,6 +682,29 @@
   border-radius: var(--radius-md);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
+  color: var(--color-text);  /* dark text — this card is white */
+}
+
+/* All form elements inside sidebar are on white, need dark text */
+.prop-sidebar__card .form__group label {
+  color: var(--color-text-muted-dark);
+}
+
+.prop-sidebar__card .form__group input,
+.prop-sidebar__card .form__group textarea {
+  background: var(--color-bg-light);
+  border-color: var(--color-border-light);
+  color: var(--color-text);
+}
+
+.prop-sidebar__card .form__group input::placeholder,
+.prop-sidebar__card .form__group textarea::placeholder {
+  color: var(--color-text-muted-dark);
+  opacity: 0.6;
+}
+
+.prop-sidebar__card .form__privacy {
+  color: var(--color-text-muted-dark);
 }
 
 .prop-sidebar__price {
@@ -788,4 +898,45 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* ── Dark-background overrides for sidebar non-card elements ── */
+.prop-sidebar__agent {
+  background: var(--color-bg-card);
+  border-color: var(--color-border);
+}
+
+.prop-agent__info strong { color: var(--color-text-light); }
+.prop-agent__info span   { color: var(--color-text-muted); }
+
+.prop-sidebar__back {
+  color: var(--color-text-muted);
+}
+.prop-sidebar__back:hover { color: var(--color-gold); }
+
+/* Related props section header on dark bg */
+.related-props .section__eyebrow { color: var(--color-gold-light); }
+.related-props .section__title   { color: var(--color-text-light); }
+.related-props .section__title em { color: var(--color-gold); }
+
+/* Enquiry success on white card */
+.prop-enquiry-success { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  text-align: center;
+}
+.prop-enquiry-success h3 { color: var(--color-gold); }
+.prop-enquiry-success p  { color: var(--color-text-muted-dark); font-size: 0.875rem; }
+
+/* Prop header meta on dark bg */
+.prop-header {
+  border-bottom-color: rgba(201, 169, 110, 0.15);
+}
+
+/* Sidebar price label */
+.prop-sidebar__label {
+  color: var(--color-text-muted-dark);
+  border-bottom-color: var(--color-border-light);
 }
